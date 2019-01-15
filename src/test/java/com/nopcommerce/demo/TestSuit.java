@@ -37,8 +37,11 @@ public class TestSuit extends BaseTest {
          /* /*https://demo.nopcommerce.com/
       click on Apple MacBook Pro 13-inch - email a friend -fill up required details and click on Send Email button
       Registered user should be able to send Email with product Successfully*/
+         //click on registration button
         homePage.clickOnRegistrationButton();
+        //do registration
         register.registration();
+        //continue on registration button
         registerResultContinuePage.clickOnRegisterContinueButton();
         homePage.clickOnAppleMacBookPro13_Inch();
         productPageForHomePageProducts.AppleMacBookPro13_Inch();
