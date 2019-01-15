@@ -16,7 +16,7 @@ public class RegistrationPage extends Utils {
     By newsletterBox = By.id("Newsletter");
     By passwordField = By.id("Password");
     By passwordConfirmationField = By.id("ConfirmPassword");
-    By registButton  = By.id("register-button");
+    By registerButton = By.id("register-button");
 
     public void registration() {
 
@@ -70,7 +70,7 @@ public class RegistrationPage extends Utils {
         enterText(passwordConfirmationField,loadProperty.getProperty("password"));
 
         //Click on Registration Button
-        clickOnElement(registButton);
+        clickOnElement(registerButton);
 
     }
 
