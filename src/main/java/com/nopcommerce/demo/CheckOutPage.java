@@ -4,25 +4,30 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
 public class CheckOutPage extends Utils {
+    LoadProperty loadProperty = new LoadProperty();
+    By selectCountryField = By.id("BillingNewAddress_CountryId");
+    By cityNameField = By.id("BillingNewAddress_City");
+    By firstLineOfAddressField = By.id("BillingNewAddress_Address1");
+    By secondLineOfAddressField = By.id("BillingNewAddress_Address2");
+    By postalCodeField = By.id("BillingNewAddress_ZipPostalCode");
 
 
     public void userIsAbleToBuyProductSuccessfully() {
 
         //Selecting country for billing adress
-        Select country = new Select(driver.findElement(By.id("BillingNewAddress_CountryId")));
-        country.selectByVisibleText("United Kingdom");
+        selectText(selectCountryField,loadProperty.getProperty("countryName"));
 
-        //Entering city name
-        enterText(By.id("BillingNewAddress_City"), "London");
+        //Enter city name
+        enterText(cityNameField,loadProperty.getProperty("cityName"));
 
-        //Entering first line of message
-        enterText(By.id("BillingNewAddress_Address1"), "15,Talbet Road");
+        //Entering first line of address
+        enterText(firstLineOfAddressField,loadProperty.getProperty("firstLineOfAddress"));
 
         //Entering Second line of message
-        enterText(By.id("BillingNewAddress_Address2"), "Wembley");
+        enterText(secondLineOfAddressField,loadProperty.getProperty("secondLineOfAddress"));
 
         //Entering postal code
-        enterText(By.id("BillingNewAddress_ZipPostalCode"), "HA04UA");
+        enterText(postalCodeField);
 
         //Entering phone number
         enterText(By.id("BillingNewAddress_PhoneNumber"), "07894234443");
