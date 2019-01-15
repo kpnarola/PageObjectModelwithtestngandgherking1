@@ -43,10 +43,8 @@ public class RegistrationPage extends Utils {
 
         //For Enter email Id
 
-        //Enter email Address with Date Format
 
-        //Variable Declaration for email Id
-       // String emailAddress = "kppatel+" + dateStamp() + "@yahoo.com";
+
 
         //Entering email id in the email field
         enterText(emailAddressField,loadProperty.getProperty("emailAddress")+dateStamp()+"@yahoo.com");
