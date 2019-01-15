@@ -11,11 +11,11 @@ public class TestSuit extends BaseTest {
     HomePage homePage = new HomePage();
     EmailAFriendPage emailAFriend = new EmailAFriendPage();
     CheckOutPage checkOutPage = new CheckOutPage();
-    ClothinPage productPage = new ClothinPage();
+    ClothingPage productPage = new ClothingPage();
     AddToCartPage addToCartPage = new AddToCartPage();
     JewelryPage jewelryPage = new JewelryPage();
     ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
-    ClothinPage clothinPage = new ClothinPage();
+    ClothingPage clothingPage = new ClothingPage();
     ProductPageForHomePageProducts productPageForHomePageProducts = new ProductPageForHomePageProducts();
 
     @Test(priority = 0)
@@ -85,19 +85,19 @@ public class TestSuit extends BaseTest {
     @Test(priority = 4)
     public void toVerifyUserShouldBeAbleToSortByPriceHighToLow() {
         homePage.clickOnAppareal();
-        clothinPage.sortBYPriceHighToLOw();
+        clothingPage.sortBYPriceHighToLOw();
         //verifying that clothing price sorting high to low
-        System.out.println(clothinPage.assertForSortByPriceHighToLow());
+        System.out.println(clothingPage.assertForSortByPriceHighToLow());
 
-        Assert.assertTrue(clothinPage.assertForSortByPriceHighToLow(),"Price is not sorted high to low");
+        Assert.assertTrue(clothingPage.assertForSortByPriceHighToLow(),"Price is not sorted high to low");
 
     }
 
     @Test(priority = 5)
     public void toVerifyUserShouldBePricesSortingLowToHigh() {
         homePage.clickOnAppareal();
-        clothinPage.sortByProductLowToHIgh();
-        clothinPage.assertForSortByPriceLowToHigh();
+        clothingPage.sortByProductLowToHIgh();
+        clothingPage.assertForSortByPriceLowToHigh();
 
     }
 

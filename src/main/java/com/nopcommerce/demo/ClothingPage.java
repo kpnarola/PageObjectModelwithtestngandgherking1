@@ -2,22 +2,22 @@ package com.nopcommerce.demo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ClothinPage extends Utils {
+public class ClothingPage extends Utils {
+    LoadProperty loadProperty = new LoadProperty();
+    By productSortByDropDownMenu = By.id("products-orderby");
+    By allProductPrice = By.xpath("//div/div[2]/div[3]/div[1]/span");
 
     public void sortBYPriceHighToLOw() {
 
-        //Selecting Product
-        Select sortByHighToLow = new Select(driver.findElement(By.id("products-orderby")));
+        //Select Product
 
-        //Sort by Product price High to Low
-        sortByHighToLow.selectByVisibleText("Price: High to Low");
+        selectText(productSortByDropDownMenu,loadProperty.getProperty("productSortByHighToLow"));
 
     }
 
@@ -27,7 +27,7 @@ public class ClothinPage extends Utils {
     //Method for result comparision
     public boolean assertForSortByPriceHighToLow() {
         //Taking all Product Price for List by using Xpath
-        List<WebElement> price = driver.findElements(By.xpath("//div/div[2]/div[3]/div[1]/span"));
+        List<WebElement> price = driver.findElements(allProductPrice);
         System.out.println();
         //Converting Xpath List in ArrayList for getting price
         List<String> prices = new ArrayList<>();
@@ -65,13 +65,13 @@ public class ClothinPage extends Utils {
 
     public void sortByProductLowToHIgh() {
         //Selecting Product From Index and filtering the price High to Low
-        Select sortByHighToLow = new Select(driver.findElement(By.id("products-orderby")));
-        sortByHighToLow.selectByVisibleText("Price: Low to High");
+
+        selectText(productSortByDropDownMenu,loadProperty.getProperty("productSortByLowToHigh"));
     }
 
     public void assertForSortByPriceLowToHigh() {
         //Getting Prices for List by using X path
-        List<WebElement> price = driver.findElements(By.xpath("//div/div[2]/div[3]/div[1]/span"));
+        List<WebElement> price = driver.findElements(allProductPrice);
 
         //Converting List Price in Array
         List<String> prices = new ArrayList<String>();
