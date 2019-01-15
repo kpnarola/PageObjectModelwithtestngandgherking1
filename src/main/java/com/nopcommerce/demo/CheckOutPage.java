@@ -1,7 +1,6 @@
 package com.nopcommerce.demo;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
 public class CheckOutPage extends Utils {
     LoadProperty loadProperty = new LoadProperty();
@@ -10,76 +9,87 @@ public class CheckOutPage extends Utils {
     By firstLineOfAddressField = By.id("BillingNewAddress_Address1");
     By secondLineOfAddressField = By.id("BillingNewAddress_Address2");
     By postalCodeField = By.id("BillingNewAddress_ZipPostalCode");
-
+    By phoneNumberField = By.id("BillingNewAddress_PhoneNumber");
+    By faxNumberField = By.id("BillingNewAddress_FaxNumber");
+    By continueButtonForShippingMethod = By.xpath("//input[@onclick='Billing.save()']");
+    By optionGroundFromShippingMethod = By.id("shippingoption_0");
+    By continueButtonForPaymentMethod = By.xpath("//input[@onclick='ShippingMethod.save()']");
+    By creditCardOptionFromPaymentMethod = By.id("paymentmethod_1");
+    By continueButtonForPaymentInformation = By.xpath("//input[@onclick='PaymentMethod.save()']");
+    By cardHolderNameField = By.id("CardholderName");
+    By cardNumberField = By.id("CardNumber");
+    By expireMonthDropDowndForCreditCard = By.id("ExpireMonth");
+    By expireYearDropDownForCreditCard = By.id("ExpireYear");
+    By sortCodeField = By.id("CardCode");
+    By continueButtonForOrderConfirmation = By.xpath("//input[@onclick=\"PaymentInfo.save()\"]");
+    By confirmOrderButton = By.xpath("//input[@onclick=\"ConfirmOrder.save()\"]");
 
     public void userIsAbleToBuyProductSuccessfully() {
 
-        //Selecting country for billing adress
+        //Select country for billing adress
         selectText(selectCountryField,loadProperty.getProperty("countryName"));
 
         //Enter city name
         enterText(cityNameField,loadProperty.getProperty("cityName"));
 
-        //Entering first line of address
+        //Enter first line of address
         enterText(firstLineOfAddressField,loadProperty.getProperty("firstLineOfAddress"));
 
-        //Entering Second line of message
+        //Enter Second line of message
         enterText(secondLineOfAddressField,loadProperty.getProperty("secondLineOfAddress"));
 
-        //Entering postal code
-        enterText(postalCodeField);
+        //Enter postal code
+        enterText(postalCodeField,loadProperty.getProperty("postalCode"));
 
-        //Entering phone number
-        enterText(By.id("BillingNewAddress_PhoneNumber"), "07894234443");
+        //Enter phone number
+        enterText(phoneNumberField,loadProperty.getProperty("phoneNumber"));
 
-        //Entering Fax number
-        enterText(By.id("BillingNewAddress_FaxNumber"), "02073638352");
+        //Enter Fax number
+        enterText(faxNumberField,loadProperty.getProperty("faxNumber"));
 
-        //Clicking on continue button for shipping method
-        clickOnElement(By.xpath("//input[@onclick='Billing.save()']"));
+        //Click on continue button for shipping method
+        clickOnElement(continueButtonForShippingMethod);
 
         //Step - 3 Shipping Method
 
-        //Clicking on first option Ground from Shipping method
-        clickOnElement(By.id("shippingoption_0"));
+        //Click on first option Ground from Shipping method
+        clickOnElement(optionGroundFromShippingMethod);
 
-        //Clicking on continue button for Payment Method
-        clickOnElement(By.xpath("//input[@onclick='ShippingMethod.save()']"));
+        //Click on continue button for Payment Method
+        clickOnElement(continueButtonForPaymentMethod);
 
         //Step-4 Payment method
 
         //Click on Credit Card option
-        clickOnElement(By.id("paymentmethod_1"));
+        clickOnElement(creditCardOptionFromPaymentMethod);
 
         //Click on continue button for payment information
-        clickOnElement(By.xpath("//input[@onclick='PaymentMethod.save()']"));
+        clickOnElement(continueButtonForPaymentInformation);
 
         //Step 5- Payment Information
 
-        //Entering card holder name
-        enterText(By.id("CardholderName"), "Shital");
+        //Enter card holder name
+        enterText(cardHolderNameField,loadProperty.getProperty("cardHolderName"));
 
-        //Entering Card number
-        enterText(By.id("CardNumber"), "4111 1111 1111 1111");
+        //Enter Card number
+        enterText(cardNumberField,loadProperty.getProperty("cardNumber"));
 
         //Entering Expire month for Credit card
-        Select expireDate = new Select(driver.findElement(By.id("ExpireMonth")));
-        expireDate.selectByValue("2");
+        selectText(expireMonthDropDowndForCreditCard,loadProperty.getProperty("expireMonth"));
 
         //Entering Expire Year
-        Select expireYear = new Select(driver.findElement(By.id("ExpireYear")));
-        expireYear.selectByVisibleText("2020");
+        selectText( expireYearDropDownForCreditCard,loadProperty.getProperty("expireYear"));
 
         //Entering short code
-        enterText(By.id("CardCode"), "737");
+        enterText(sortCodeField,loadProperty.getProperty("sortCode"));
 
         //Clicking on Continue button for order confirmation
-        clickOnElement(By.xpath("//input[@onclick=\"PaymentInfo.save()\"]"));
+        clickOnElement(continueButtonForOrderConfirmation);
 
         //Step 6-Confirm Order
 
         //Clicking on Confirm Order button
-        clickOnElement(By.xpath("//input[@onclick=\"ConfirmOrder.save()\"]"));
+        clickOnElement(confirmOrderButton);
 
            }
 
