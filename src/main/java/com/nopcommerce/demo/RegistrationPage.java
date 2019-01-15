@@ -3,24 +3,29 @@ package com.nopcommerce.demo;
 import org.openqa.selenium.By;
 
 public class RegistrationPage extends Utils {
+    LoadProperty loadProperty = new LoadProperty();
+    RegisterResultContinuePage registerResultContinuePage = new RegisterResultContinuePage();
+    By genderMale = By.id("gender-male");
+    By firstNameField = By.id("FirstName");
+    By lastNameField = By.id("LastName");
+    By dateOfBirthDayField = By.name("DateOfBirthDay");
 
-     RegisterResultContinuePage registerResultContinuePage = new RegisterResultContinuePage();
     public void registration() {
 
         //Click on gender
-        clickOnElement(By.id("gender-male"));
+        clickOnElement(genderMale);
 
         //Click on First Name
-        enterText(By.id("FirstName"), "Kp");
+        enterText(firstNameField,loadProperty.getProperty("firstName"));
 
         //Click on Last Name
-        enterText(By.id("LastName"), "patel");
+        enterText(lastNameField,loadProperty.getProperty("lastName"));
 
         //Date of Birth Field
 
         //Input Date of Birth Day by using Text
 //
-        selectText(By.name("DateOfBirthDay"),"1");
+        selectText(dateOfBirthDayField,loadProperty.getProperty("dateOfBirthDay"));
 
         //Input Date of Birth Month by using Index
         selectIndex(By.name("DateOfBirthMonth"),4);
