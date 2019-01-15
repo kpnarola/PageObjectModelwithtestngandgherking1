@@ -3,34 +3,41 @@ package com.nopcommerce.demo;
 import org.openqa.selenium.By;
 
 public class EmailAFriendPage extends Utils {
+    LoadProperty loadProperty = new LoadProperty();
+    By friendEmailField = By.id("FriendEmail");
+    By personalMessageField = By.id("PersonalMessage");
+    By sendEmailButton = By.name("send-email");
+    // unregistered user
+    By emailAFriendButton = By.xpath("//input[@value='Email a friend']");
+    By personalEmailAddressField = By.id("YourEmailAddress");
 
     public void emailAFriendForRegisterUser() {
 
         //Enter Friends Email Address
-        enterText(By.id("FriendEmail"), "pkpatel@yahoo.com");
+        enterText(friendEmailField,loadProperty.getProperty("friend'sEmail"));
 
         //Enter Personal Message
-        enterText(By.id("PersonalMessage"), "It is very nice product have a look");
+        enterText(personalMessageField,loadProperty.getProperty("personalMessage"));
 
         //Click on send email button
-        clickOnElement(By.name("send-email"));
+        clickOnElement(sendEmailButton);
 
     }
 
     public void emailAFriendForUnRegisterUser() {
         //Click on email a friend button from the selected product
-        clickOnElement(By.xpath("//input[@value='Email a friend']"));
+        clickOnElement(emailAFriendButton);
 
         //Enter friend's email address
-        enterText(By.id("FriendEmail"), "pnpatel@gmail.com");
+        enterText(friendEmailField,loadProperty.getProperty("friend'sEmail"));
 
         //Enter my email address
-        enterText(By.id("YourEmailAddress"), "skpatel@hotmail.com");
+        enterText(personalEmailAddressField,loadProperty.getProperty("personalEmailAddress"));
 
         //Enter personal message
-        enterText(By.id("PersonalMessage"), "I wanted to show you this nice product");
+        enterText(personalMessageField,loadProperty.getProperty("personalMessage"));;
 
         //Click on send email button
-        clickOnElement(By.name("send-email"));
+        clickOnElement(sendEmailButton);
     }
 }
