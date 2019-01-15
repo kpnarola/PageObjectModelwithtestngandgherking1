@@ -9,6 +9,14 @@ public class RegistrationPage extends Utils {
     By firstNameField = By.id("FirstName");
     By lastNameField = By.id("LastName");
     By dateOfBirthDayField = By.name("DateOfBirthDay");
+    By dateOfBirthMonthField = By.name("DateOfBirthMonth");
+    By daOfBirthYearField = By.name("DateOfBirthYear");
+    By emailAddressField = By.id("Email");
+    By companyNameField = By.id("Company");
+    By newsletterBox = By.id("Newsletter");
+    By passwordField = By.id("Password");
+    By passwordConfirmationField = By.id("ConfirmPassword");
+    By registButton  = By.id("register-button");
 
     public void registration() {
 
@@ -28,27 +36,27 @@ public class RegistrationPage extends Utils {
         selectText(dateOfBirthDayField,loadProperty.getProperty("dateOfBirthDay"));
 
         //Input Date of Birth Month by using Index
-        selectIndex(By.name("DateOfBirthMonth"),4);
+        selectIndex(dateOfBirthMonthField,Integer.parseInt(loadProperty.getProperty("dateOfBirthMonth")));
 
         //Input Date of Birth Year
-        selectValue(By.name("DateOfBirthYear"),"1979");
+        selectValue(daOfBirthYearField,loadProperty.getProperty("dateOfBirthYear"));
 
         //For Enter email Id
 
         //Enter email Address with Date Format
 
         //Variable Declaration for email Id
-        String emailAddress = "kppatel+" + dateStamp() + "@yahoo.com";
+       // String emailAddress = "kppatel+" + dateStamp() + "@yahoo.com";
 
         //Entering email id in the email field
-        driver.findElement(By.id("Email")).sendKeys(emailAddress);
+        enterText(emailAddressField,loadProperty.getProperty("emailAddress")+dateStamp()+"@yahoo.com");
 
         //For Company Detail
         //Enter Company name
-        enterText(By.id("Company"), "Yogiraj");
+        enterText(companyNameField,loadProperty.getProperty("companyName"));
 
         //For Options - Click on Newsletters box
-        clickOnElement(By.id("Newsletter"));
+        clickOnElement(newsletterBox);
 
         //For Your Password Field - password for registration
 
@@ -56,13 +64,13 @@ public class RegistrationPage extends Utils {
         String password = "test123";
 
         //Entering Password in Password field
-        enterText(By.id("Password"), password);
+        enterText(passwordField,loadProperty.getProperty("password"));
 
         //Confirming Password
-        enterText(By.id("ConfirmPassword"), password);
+        enterText(passwordConfirmationField,loadProperty.getProperty("password"));
 
         //Click on Registration Button
-        clickOnElement(By.id("register-button"));
+        clickOnElement(registButton);
 
     }
 

@@ -18,9 +18,8 @@ public class BrowserSelector extends Utils{
             System.setProperty("webdriver.gecko.driver","src\\test\\Resources\\BrowserDriver\\geckodriver.exe");
             System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
             System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
-
-
             driver = new FirefoxDriver();
+            driver.get(loadProperty.getProperty("url"));
             driver.manage().window().maximize();
                     } else if (browser.equalsIgnoreCase("chrome")){
 
@@ -42,6 +41,7 @@ public class BrowserSelector extends Utils{
             options.setCapability(InternetExplorerDriver.IE_SWITCHES,"-private");
             options.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION,true);
             driver = new InternetExplorerDriver(options);
+            driver.get(loadProperty.getProperty("url"));
             driver.manage().window().maximize();
         } else{
             System.out.println("Browser name is empty or typed wrong:"+browser);
