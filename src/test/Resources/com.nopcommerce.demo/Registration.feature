@@ -111,5 +111,5 @@ Feature: Registration
     And select "US Dollar" as a customer currency
     And click on the "Jewelry" category
     And navigate to jewelry page
-    And see all the products
+    And all the products should be visible
     Then user should able to see "US Dollar sing($)" before price in all the product
