@@ -6,7 +6,7 @@ import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
-public class JewelryPage extends Utils{
+public class JewelryPage extends Utils {
     LoadProperty loadProperty = new LoadProperty();
     By allJewelryProduct = By.cssSelector(".item-box .actual-price");
 
@@ -14,7 +14,7 @@ public class JewelryPage extends Utils{
 
     public void assertForCurrencyIsEuro() {
 
-         //Select list of item with price
+        //Select list of item with price
         List<WebElement> jewelryPriceList = driver.findElements(allJewelryProduct);
         //To get total element size System.out.println(jewelryPriceList.size());
 
@@ -27,19 +27,26 @@ public class JewelryPage extends Utils{
         softAssert.assertAll();
     }
 
-    public void assertForCurrencyUSDollar(){
-         //Select list of product with price
+    public boolean assertForCurrencyUSDollar() {
+        //Select list of product with price
         List<WebElement> jewelryPriceList = driver.findElements(allJewelryProduct);
 
+        boolean dollarSignIsPresent = false;
         for (WebElement al : jewelryPriceList) {
-
             //Excrete Dollar sing by using substring
-            System.out.println(al.getText().substring(0, 1));
+            if (al.getText().substring(0, 1).equalsIgnoreCase("$")) {
+                dollarSignIsPresent = true;
+                System.out.println(al.getText().substring(0, 1));
+            } else {
+                dollarSignIsPresent = false;
+                break;
+            }
 
             //Result Verification
             softAssert.assertEquals("$", al.getText().substring(0, 1));
         }
         softAssert.assertAll();
+        return dollarSignIsPresent;
     }
 }
 

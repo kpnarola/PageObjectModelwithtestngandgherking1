@@ -127,9 +127,8 @@ public class TestSuit extends BaseTest {
     @Test
     public void toVerifyAddToCartButtonIsPresentInAllProductOnHomePage() {
         homePage.openHomePage();
-        addToCartPage.setAddToCartLIst();
-
-
+        //addToCartPage.setAddToCartLIst();
+        Assert.assertTrue(addToCartPage.setAddToCartLIst(),"add to card button is not displayed");
     }
 
     @Test
@@ -141,6 +140,8 @@ public class TestSuit extends BaseTest {
     @Test
     public void toVerifyCustomerCurrencyIsDollar() {
         homePage.clickOnCurrencyUSDollarAndJewelry();
-        jewelryPage.assertForCurrencyUSDollar();
+        //To verify $ sign is present with prices on the jewellery page
+        Assert.assertTrue(jewelryPage.assertForCurrencyUSDollar(),
+                "Dollar sign may be not present with one of the price or all the price    ");
     }
 }
