@@ -89,3 +89,27 @@ Feature: Registration
     And click on menu drop down button for sort by
     And select price high to low
     Then user should be able to sort by product price high to low
+
+  Scenario: To verify Add To Cart button should be present in all product on home page
+    Given  user is on the home page of website
+    When  user scroll down
+    And see the featured products
+    Then user should be able to see "Add to Cart" button in the all product
+
+  Scenario: To verify user should be able to select currency "Euro" in currency selector box
+    Given user is on the home page of website
+    When user click on the currency selector box
+    And select "Euro" as a customer currency
+    And click on the "Jewelry" category
+    And navigate to jewelry page
+    And see all the products
+    Then user should able to see "Euro sing" before price in all the product
+
+  Scenario: To verify user should be able to select currency "US Dollar" in currency selector box
+    Given user is on the home page of website
+    When user click on the currency selector box
+    And select "US Dollar" as a customer currency
+    And click on the "Jewelry" category
+    And navigate to jewelry page
+    And see all the products
+    Then user should able to see "US Dollar sing($)" before price in all the product
