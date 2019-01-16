@@ -1,13 +1,14 @@
 package com.nopcommerce.demo;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,6 +58,7 @@ public class Utils extends BasePage {
 
     public static void getText(By by) {
         driver.findElement(by).getText();
+
         return;
     }
 
@@ -193,21 +195,56 @@ public class Utils extends BasePage {
     }
     //Scroll to view element
 
-    public static void scrollToView(By by){
-        JavascriptExecutor js = ((JavascriptExecutor)driver);
+    public static void scrollToView(By by) {
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
         sleep(10);
         js.executeScript("argument");
     }
 
     //scroll to element and click
-    public void scrollTillElementFoundAndClick(By by, WebElement element){
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",element);
+    public void scrollTillElementFoundAndClick(By by, WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         driver.findElement(by).click();
     }
     //Wait for alert to display
 
-}
+    public static void waitForAler() {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.alertIsPresent());
+    }
 
+    // get css property of element
+    public String getCssPropOfElement(WebElement element, String css) {
+        String value = element.getCssValue(css);
+        return value;
+    }
+
+    //browser print screen / screen shot
+    public static void printWebPage(String filePath) {
+        TakesScreenshot screenshot = (TakesScreenshot) driver;
+        File scr1 = screenshot.getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(scr1, new File(filePath + "\\photo" + dateStamp() + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    //convert date
+
+    public static void getDateToNumeric(String dayMonthYear) {
+
+        DateFormat dateFormat = new SimpleDateFormat();
+        Date date = null;
+        try {
+            date = dateFormat.parse(dayMonthYear);
+
+        } catch (Exception e){
+            
+        }
+
+        }
+    }
 
 
 
