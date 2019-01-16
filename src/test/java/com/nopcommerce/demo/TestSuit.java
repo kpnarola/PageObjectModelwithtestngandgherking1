@@ -99,6 +99,7 @@ public class TestSuit extends BaseTest {
         clothingPage.sortByProductLowToHIgh();
         clothingPage.assertForSortByPriceLowToHigh();
 
+
     }
 
     @Test

@@ -109,7 +109,7 @@ public class Utils extends BasePage {
     }
 
     //Checking WebElement present in DOM
-    public static boolean isElenetPresent(By by) {
+    public static boolean isWebElementPresent(By by) {
         try {
             driver.findElement(by);
             return true;
@@ -139,7 +139,7 @@ public class Utils extends BasePage {
     }
     //Try to click element three times if not available in first go
 
-    public static boolean retrayingfindclick(By by, int seconds ) {
+    public static boolean retrayingFindClick(By by, int seconds ) {
         boolean result = false;
         int attemps = 0;
         while (attemps < 3) {

@@ -21,6 +21,7 @@ public class AddToCartPage extends Utils {
         for (WebElement al : addToCartLIst) {
 
             softAssert.assertEquals(al.getAttribute("value"), "Add to cart");
+
         }
         softAssert.assertAll();
     }
