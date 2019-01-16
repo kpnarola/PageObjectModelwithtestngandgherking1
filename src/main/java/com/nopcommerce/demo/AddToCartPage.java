@@ -22,7 +22,10 @@ public class AddToCartPage extends Utils {
 
             softAssert.assertEquals(al.getAttribute("value"), "Add to cart");
 
+
+
         }
         softAssert.assertAll();
+
     }
 }

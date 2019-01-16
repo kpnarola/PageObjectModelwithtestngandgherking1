@@ -96,5 +96,7 @@ public class ClothingPage extends Utils {
         Assert.assertEquals(prices, sortedPrices, "Sorting Prices - low to high is not working");
 
 
+
+
     }
 }
