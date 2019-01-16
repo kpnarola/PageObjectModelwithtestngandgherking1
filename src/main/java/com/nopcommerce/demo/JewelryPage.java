@@ -12,19 +12,28 @@ public class JewelryPage extends Utils {
 
     SoftAssert softAssert = new SoftAssert();
 
-    public void assertForCurrencyIsEuro() {
+    public boolean assertForCurrencyIsEuro() {
+        boolean euroSingIsPrecent = false;
 
         //Select list of item with price
         List<WebElement> jewelryPriceList = driver.findElements(allJewelryProduct);
-        //To get total element size System.out.println(jewelryPriceList.size());
 
+        //To get total element size System.out.println(jewelryPriceList.size());
         for (WebElement al : jewelryPriceList) {
             System.out.println(al.getText().substring(0, 1));
+            if (al.getText().substring(0, 1).equalsIgnoreCase("Ђ")){
+                euroSingIsPrecent = true;
+                System.out.println(al.getText().substring(0, 1));
+            }else {
+                euroSingIsPrecent = false;
+                break;
+            }
 
-            //Result Verification
+                //Result Verification
             softAssert.assertEquals("Ђ", al.getText().substring(0, 1));
         }
         softAssert.assertAll();
+        return euroSingIsPrecent;
     }
 
     public boolean assertForCurrencyUSDollar() {

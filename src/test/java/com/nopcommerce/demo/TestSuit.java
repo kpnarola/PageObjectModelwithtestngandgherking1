@@ -104,7 +104,7 @@ public class TestSuit extends BaseTest {
 
     @Test(priority = 4)
     public void toVerifyUserShouldBeAbleToSortByPriceHighToLow() {
-        //click on appareal category from home page
+        //click on apparel category from home page
         homePage.clickOnAppareal();
         //click on clothing and sort by price high to low from drop down menu
         clothingPage.sortBYPriceHighToLOw();
@@ -117,8 +117,11 @@ public class TestSuit extends BaseTest {
 
     @Test(priority = 5)
     public void toVerifyUserShouldBePricesSortingLowToHigh() {
+        //click on Apparel category on home page
         homePage.clickOnAppareal();
+        //click on clothing and sort by price low to high
         clothingPage.sortByProductLowToHIgh();
+        //result comparision
         clothingPage.assertForSortByPriceLowToHigh();
 
 
@@ -126,19 +129,24 @@ public class TestSuit extends BaseTest {
 
     @Test
     public void toVerifyAddToCartButtonIsPresentInAllProductOnHomePage() {
+        //open home page
         homePage.openHomePage();
-        //addToCartPage.setAddToCartLIst();
+       // verify add to cart list is present in all home page products
         Assert.assertTrue(addToCartPage.setAddToCartLIst(),"add to card button is not displayed");
     }
 
     @Test
     public void toVerifyCustomerCurrencyIsEuro() {
+        //select customer currency to the euro and click on jewelry category
         homePage.clickOnCurrencyEuroAndJewelry();
-        jewelryPage.assertForCurrencyIsEuro();
+        //verify result for euro sing is present in all the products
+         Assert.assertTrue(jewelryPage.assertForCurrencyIsEuro(),
+                 "Euro sign may be not present with one of the price or all the price ");
     }
 
     @Test
     public void toVerifyCustomerCurrencyIsDollar() {
+        //select customer currency is dollar on home page and click on jewelry page
         homePage.clickOnCurrencyUSDollarAndJewelry();
         //To verify $ sign is present with prices on the jewellery page
         Assert.assertTrue(jewelryPage.assertForCurrencyUSDollar(),
