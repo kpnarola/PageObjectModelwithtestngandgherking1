@@ -6,7 +6,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -56,10 +60,10 @@ public class Utils extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
-    public static void getText(By by) {
-        driver.findElement(by).getText();
+    public static String getText(By by) {
+       String text = driver.findElement(by).getText();
 
-        return;
+        return text;
     }
 
     //Reusable Method For assert
@@ -135,12 +139,12 @@ public class Utils extends BasePage {
     }
     //Try to click element three times if not available in first go
 
-    public static boolean retrayingfindclick(By by) {
+    public static boolean retrayingfindclick(By by, int seconds ) {
         boolean result = false;
         int attemps = 0;
         while (attemps < 3) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(seconds);
                 driver.findElement(by).click();
                 result = true;
                 break;
@@ -207,7 +211,6 @@ public class Utils extends BasePage {
         driver.findElement(by).click();
     }
     //Wait for alert to display
-
     public static void waitForAler() {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.alertIsPresent());
@@ -244,6 +247,12 @@ public class Utils extends BasePage {
         }
 
         }
+    //take screenshot of current display (full)
+    public void takeScreenShotOfCurrentDisplayFull(String destination_folder) throws IOException {
+        Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(500)).takeScreenshot(driver);
+//        File destination_folder = new File("Destination folder path");
+        ImageIO.write(screenshot.getImage(),"JPG", new File(destination_folder));
+    }
     }
 
 
